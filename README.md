@@ -1,7 +1,7 @@
 # Lisa and Dominic's Project
 
 ### Team Members
-1. Lisa Siewart
+1. Lisa Siewert
 2. Dominic Cwalinski
 
 ### Final Proposal
