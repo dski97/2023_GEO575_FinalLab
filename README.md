@@ -24,7 +24,7 @@ This map hopes to inform rail safety outreach groups and public safety agencies 
         
 2. Requirements Document (comprehensive...no page limit)
     Representation
-        | Representation |
+        | Representation |    |     |
         | -------- | -------- | -------- |
         | 1 | Basemap | Zoomed toward the Outline of the US States: OPM Mapnik / Stamer TonerLite / Stadia Smooth Dark https://leaflet-extras.github.io/leaflet-providers/preview/  |
         | 2 | Train Routes | Row 2, Column 3 |
