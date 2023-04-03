@@ -22,29 +22,29 @@ This map hopes to inform rail safety outreach groups and public safety agencies 
         - Scenario
             * The goal of the public safety officer is to improve the safety of the public at railroad crossings. The officer forms an intention when seeing the system to look at an area they know is one of the best or worst crossings in their jurisdiction. They want to compare what they know to be true with what is in the application. They specify the action of panning and zooming across the map and clicking on the area they are interested in. They execute this action as planned based on prior tool experience. They perceive the change in the system. They can see the map and statistics populate and change. They interpret the state of the system and compare the crossing metrics with their local knowledge of the crossing. They evaluate the outcome by determining how accurate the tool is according to their personal knowledge. Then they can use the information to advocate for improved safety at that railroad crossing point. 
         
-2. Requirements Document (comprehensive...no page limit)
-    Representation
+2. Requirements Document
     
-| Column 1 | Column 2 | Column 3 |
+    
+| Representation |   |   |
 | -------- | -------- | -------- |
-| Row 1, Column 1 | Row 1, Column 2 | Row 1, Column 3 |
-| Row 2, Column 1 | Row 2, Column 2 | Row 2, Column 3 |
-| Row 3, Column 1 | Row 3, Column 2 | Row 3, Column 3 |
+| 1 | Basemap | Zoomed toward the Outline of the US States: OPM Mapnik / Stamer TonerLite / Stadia Smooth Dark https://leaflet-extras.github.io/leaflet-providers/preview/  |
+| 2 | Train Routes  | USA Railroads (Active and Inactive) Provided by ESRI and the NGDA (National Geospatial Data Asset). OpenRailWay Tileset may be used depending on App Usability.  Train Tile Mapset from OPM (OpenRailRoadMap) http://{s}.tiles.openrailwaymap.org/standard/{z}/{x}/{y}.png' https://services.arcgis.com/P3ePLMYs2RVChkJx/arcgis/rest/services/USA_Railroads_1/FeatureServer  |
+| 3 | Train Accidents  | Rail Equipment Accidents (6180.54) for the Years 2012-2022 as reported by the Federal Railroad Administration https://safetydata.fra.dot.gov/OfficeofSafety/publicsite/on_the_fly_download.aspx  |
+| 4 | Legend  | Visually represents the rail and rail accident types.  |
+| 5 | Overview  | Documentation on the maps layers and how to use the web application.  |
+| 6 | Train Passenger Stations  | Passenger Rail Train Stations Provided by USDOT BTS https://data-usdot.opendata.arcgis.com/datasets/usdot::north-american-rail-network-nodes/explore  |
+| 7 | Interactive Data Count Feed  | Based on user Queries, the Display will show the count of accidents that occurred.  |
 
+| Interaction |   |   |
+| -------- | -------- | -------- |
+| 1 | Query | Filter. Location, time, attribute. Adjust the initial query parameters for the train accident data.  |
+| 2 | Basemap Toggle  | Overlay. Map display. Change the way the map features are displayed on the sticky map.   |
+| 3 | Route Selection   | Retrieve. Objects. Hover over the route to learn the Rail code of the railroad owning company.   |
+| 4 | Accident Selection   | Retrieve. Objects. Hover over the accident to learn more information regarding the accident.   |
+| 5 | Change Display of Accidents   | Resymbolize. Objects. Change the display of the feature symbols based on what the user wants to see shown on the map.   |
+| 6 | Rate-based scrolling   | Pan and Zoom. Allow the User to pan over the map and zoom while exploring the map features.   |
+| 7 | Cluster Display   | Resymbolize. Cluster points at the start extent of the map. Changes at different scales.   |
 
-
-
-
-    1. Representation
-        * data sources
-        * basemap tileset
-        * abbreviated title for the layers
-        * description of proposed symbolization
-    2. Interaction
-        * each unique interface widget as a separate row
-        *   abbreviated title for the function
-        *   coding by operator and operand 
-        *   description of the proposed interaction behavior and UI design
 
 3. Lo-fi Wireframes
     *   series of wireframes that walk through use case scenario
@@ -52,3 +52,5 @@ This map hopes to inform rail safety outreach groups and public safety agencies 
     *   separate wireframe must be created for every new view generated in the use case scenario
     *   raw hand drawn sketches are fine for the draft proposal, but should be drawn more neatly for the final proposal
     *   use terminaology from the requirements document on the wireframe
+    
+    ![Alt text](relative/path/to/img.jpg?raw=true "Optional title")
