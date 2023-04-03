@@ -47,10 +47,6 @@ This map hopes to inform rail safety outreach groups and public safety agencies 
 
 
 3. Lo-fi Wireframes
-    *   series of wireframes that walk through use case scenario
-    *   demonstrate layout of proposed functionality
-    *   separate wireframe must be created for every new view generated in the use case scenario
-    *   raw hand drawn sketches are fine for the draft proposal, but should be drawn more neatly for the final proposal
-    *   use terminaology from the requirements document on the wireframe
     
-    ![Alt text](relative/path/to/img.jpg?raw=true "Optional title")
+    ![Wireframe1](https://github.com/dski97/2023_GEO575_FinalLab/raw/main/img/Wireframe1.png)
+
