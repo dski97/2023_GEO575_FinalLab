@@ -46,7 +46,16 @@ This map hopes to inform rail safety outreach groups and public safety agencies 
 | 7 | Cluster Display   | Resymbolize. Cluster points at the start extent of the map. Changes at different scales.   |
 
 
-3. Lo-fi Wireframes
+3.  Wireframes
     
     ![Wireframe1](https://github.com/dski97/2023_GEO575_FinalLab/raw/main/img/Wireframe1.png)
+    
+    **Wireframe 1:** Pop-up that informs the user of the purpose of the map and the data sources.  Tips on how to interact with the map will be included.  The main map content will be greyed out behind the popup. 
+    
+    ![Wireframe2](https://github.com/dski97/2023_GEO575_FinalLab/raw/main/img/Wireframe2.png)
+    
+    **Wireframe 2:** This is the main map interface.  There will be a slider that the user can use to view different datasets by year—a train icon will be used as the slider control.  If the user would like to view all years, they can click the button.  Then the user can filter by accident type, railroad company, cause of incident, and the weather at the time of the accident.  Different symbols will be used to identify (all symbols from the Noun Project and creator attributes and data sources will be included at the bottom of the page.
+    
+    ![Wireframe3](https://github.com/dski97/2023_GEO575_FinalLab/raw/main/img/Wireframe3.png)
 
+    **Wireframe 3:** When the user clicks on the railroad polylines or accident points, a popup box will appear with additional information about that location pulled from our datasets.       
