@@ -1,1 +1,14 @@
-/*insert style here*/
+/* style.css */
+#map {
+    width: 100%;
+    height: 100vh;
+    border: 0;
+}
+
+body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+}
+
+
