@@ -123,60 +123,11 @@ document.addEventListener('DOMContentLoaded', () => {
         }, 0);
     }
 
-    //function to create time slider
-    function filterTrainAccidentsByYear(year, accidentType) {
-        // Add the loading-cursor class to the body element
-        document.body.classList.add('loading-cursor');
-    
-        // Clear the existing layers
-        trainAccidentsCluster.clearLayers();
-    
-        // Add a setTimeout with a 0ms delay to allow the browser to update the cursor style
-        setTimeout(() => {
-            // Perform the task of filtering and adding layers
-            trainAccidentsData.eachLayer(layer => {
-                if (
-                    (year === 'All' || layer.feature.properties.Year === year) &&
-                    (accidentType === 'All' || layer.feature.properties['Type of Accident'] === accidentType)
-                ) {
-                    trainAccidentsCluster.addLayer(layer);
-                }
-            });
-    
-            // Remove the loading-cursor class from the body element
-            document.body.classList.remove('loading-cursor');
-        }, 0);
-    }
-
     //update accident count
     function updateAccidentCount(count) {
         document.getElementById('accident-count').textContent = count;
     }
 
-    //function to filter train accidents by the type of accident
-    function filterTrainAccidentsByAccidentType(year, accidentType) {
-        // Add the loading-cursor class to the body element
-        document.body.classList.add('loading-cursor');
-    
-        // Clear the existing layers
-        trainAccidentsCluster.clearLayers();
-    
-        // Add a setTimeout with a 0ms delay to allow the browser to update the cursor style
-        setTimeout(() => {
-            // Perform the task of filtering and adding layers
-            trainAccidentsData.eachLayer(layer => {
-                if (
-                    (year === 'All' || layer.feature.properties.Year === year) &&
-                    (accidentType === 'All' || layer.feature.properties['Type of Accident'] === accidentType)
-                ) {
-                    trainAccidentsCluster.addLayer(layer);
-                }
-            });
-    
-            // Remove the loading-cursor class from the body element
-            document.body.classList.remove('loading-cursor');
-        }, 0);
-    }
     // Create layer control
     const overlayLayers = {};
 
