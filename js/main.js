@@ -45,7 +45,23 @@ document.addEventListener('DOMContentLoaded', () => {
         iconAnchor: [12, 25], // Set the anchor point of the icon, if needed
         popupAnchor: [0, -25] // Set the anchor point of the popup, if needed
     });
+
+    // Custom style for train track lines
+    const trainTrackStyle = {
+        color: '#000000', // Set the color of the lines
+        weight: 5, // Set the width of the lines
+        opacity: 0.5, // Set the opacity of the lines
+        dashArray: '1, 10', // Set the dash pattern for the lines
+        lineCap: 'round', // Set the line cap style
+        lineJoin: 'round' // Set the line join style
+    };
     
+    // Custom style for highlighted train track lines
+    const highlightedTrainTrackStyle = {
+        color: '#ff7800',
+        weight: 7,
+        opacity: 1
+    };
 
     // Create layer control
     const overlayLayers = {};
@@ -57,7 +73,23 @@ document.addEventListener('DOMContentLoaded', () => {
             data.eachLayer(layer => trainAccidentsCluster.addLayer(layer));
             overlayLayers["Train Accidents"] = trainAccidentsCluster;
         }),
-        loadGeoJSON('data/MainLineActiveTrainLines.geojson').then(layer => {
+        loadGeoJSON('data/MainLineActiveTrainLines.geojson', {
+            style: trainTrackStyle,
+            onEachFeature: (feature, layer) => {
+                if (feature.properties) {
+                    const railroadOwnerCode = feature.properties.RR_OWNER;
+                    layer.bindPopup(`<b>Railroad Owner Code:</b> ${railroadOwnerCode}`);
+        
+                    layer.on('click', (e) => {
+                        layer.setStyle(highlightedTrainTrackStyle);
+                    });
+        
+                    layer.on('popupclose', (e) => {
+                        layer.setStyle(trainTrackStyle);
+                    });
+                }
+            }
+        }).then(layer => {
             overlayLayers["Main Line Active Train Lines"] = layer;
         }),
         loadGeoJSON('data/Stations.geojson', {
