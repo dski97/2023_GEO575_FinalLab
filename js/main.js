@@ -94,9 +94,34 @@ document.addEventListener('DOMContentLoaded', () => {
                 return 'img/Train.png'; // Set a default icon in case the value doesn't match any cases
         }
 }
+    //function to create time slider
+    function filterTrainAccidentsByYear(year) {
+        // Add the loading-cursor class to the body element
+        document.body.classList.add('loading-cursor');
+    
+        // Clear the existing layers
+        trainAccidentsCluster.clearLayers();
+    
+        // Add a setTimeout with a 0ms delay to allow the browser to update the cursor style
+        setTimeout(() => {
+            // Perform the task of filtering and adding layers
+            trainAccidentsData.eachLayer(layer => {
+                if (year === 'All' || layer.feature.properties.Year === year) {
+                    trainAccidentsCluster.addLayer(layer);
+                }
+            });
+    
+            // Remove the loading-cursor class from the body element
+            document.body.classList.remove('loading-cursor');
+        }, 0);
+    }
 
     // Create layer control
     const overlayLayers = {};
+
+    //declare trainAccidentsData and trainAccidentsCluster
+    let trainAccidentsData;
+    let trainAccidentsCluster = L.markerClusterGroup();
 
     // Wait for all GeoJSON layers to load before adding the layer control
     Promise.all([
@@ -118,9 +143,31 @@ document.addEventListener('DOMContentLoaded', () => {
                 return marker;
             }
         }).then(data => {
-            var trainAccidentsCluster = L.markerClusterGroup();
-            data.eachLayer(layer => trainAccidentsCluster.addLayer(layer));
+            trainAccidentsData = data;
+            trainAccidentsData.eachLayer(layer => trainAccidentsCluster.addLayer(layer));
             overlayLayers["Train Accidents"] = trainAccidentsCluster;
+
+           //add evemt listener to the slider
+            document.getElementById('year-input').addEventListener('input', function (event) {
+                const year = parseInt(event.target.value);
+                const yearLabel = document.getElementById('year-label');
+                if (year === 0) {
+                    yearLabel.textContent = 'All';
+                    filterTrainAccidentsByYear('All');
+                } else {
+                    yearLabel.textContent = year;
+                    filterTrainAccidentsByYear(year);
+                }
+        });
+        document.getElementById('year-reset').addEventListener('click', function () {
+            const yearInput = document.getElementById('year-input');
+            const yearLabel = document.getElementById('year-label');
+            yearInput.value = '0';
+            yearLabel.textContent = 'All';
+            filterTrainAccidentsByYear('All');
+        });
+
+
         }),
         loadGeoJSON('data/MainLineActiveTrainLines.geojson', {
             style: trainTrackStyle,

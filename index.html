@@ -17,6 +17,14 @@
 <body>
     <div id="map"></div>
 
+    <div id="year-slider">
+        <label for="year-input">Year: <span id="year-label">All</span></label>
+        <input type="range" id="year-input" min="2012" max="2022" value="0" step="1">
+        <button id="year-reset">All</button>
+    </div>
+
+
+
     <script type="text/javascript" src="lib/jquery-3.5.1.js"></script>
     <script src="lib/leaflet/leaflet-src.js"></script>
     <script src="lib/leaflet-providers.js"></script>
