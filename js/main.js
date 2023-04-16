@@ -63,13 +63,52 @@ document.addEventListener('DOMContentLoaded', () => {
         opacity: 1
     };
 
+    // Function to get the appropriate icon based on the "Type of Accident" value
+    function getAccidentIcon(typeOfAccident) {
+        switch (typeOfAccident) {
+            case 'Highway-Rail Crossing':
+                return 'img/HighwayRail.gif';
+            case 'Other (Described in Narrative)':
+                return 'img/Other.png';
+            case 'Derailment':
+                return 'img/TrainDerailment.png';
+            case 'Broken Train Collision':
+                return 'img/BrokenTrain.png';
+            case 'Fire / Violent Rupture':
+                return 'img/Fire.png';
+            case 'Head On Collision':
+                return 'img/Collision.png';
+            case 'Obstruction':
+                return 'img/Obstruction.png';
+            case "Other Impacts":
+                return 'img/OtherImpact.png';
+            case 'Raking Collision':
+                return 'img/Raking.png';
+            case 'Rearend Collision':
+                return 'img/RearEnd.png';
+            case 'RR Grade Crossing':
+                return 'img/RRCrossing.png';
+            case 'Side Collision':
+                return 'img/SideHit.png';
+            default:
+                return 'img/Train.png'; // Set a default icon in case the value doesn't match any cases
+        }
+}
+
     // Create layer control
     const overlayLayers = {};
 
     // Wait for all GeoJSON layers to load before adding the layer control
     Promise.all([
-        loadGeoJSON('data/TrainAccidents.geojson').then(data => {
-            const trainAccidentsCluster = L.markerClusterGroup();
+        loadGeoJSON('data/TrainAccidents.geojson', {
+            pointToLayer: (feature, latLng) => {
+                const iconUrl = getAccidentIcon(feature.properties['Type of Accident']);
+                const icon = L.icon({ iconUrl: iconUrl, iconSize: [25, 41], iconAnchor: [12, 41], popupAnchor: [0, -41] });
+        
+                return L.marker(latLng, { icon: icon });
+            }
+        }).then(data => {
+            var trainAccidentsCluster = L.markerClusterGroup();
             data.eachLayer(layer => trainAccidentsCluster.addLayer(layer));
             overlayLayers["Train Accidents"] = trainAccidentsCluster;
         }),
