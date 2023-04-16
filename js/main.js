@@ -100,12 +100,22 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Wait for all GeoJSON layers to load before adding the layer control
     Promise.all([
+        // Load TrainAccidents geojson file and add it to a marker cluster group
         loadGeoJSON('data/TrainAccidents.geojson', {
             pointToLayer: (feature, latLng) => {
                 const iconUrl = getAccidentIcon(feature.properties['Type of Accident']);
                 const icon = L.icon({ iconUrl: iconUrl, iconSize: [25, 41], iconAnchor: [12, 41], popupAnchor: [0, -41] });
-        
-                return L.marker(latLng, { icon: icon });
+
+                const marker = L.marker(latLng, { icon: icon });
+
+                // Create a popup with all the properties from the GeoJSON feature
+                const popupContent = Object.entries(feature.properties)
+                    .map(([key, value]) => `<b>${key}:</b> ${value}`)
+                    .join('<br>');
+
+                marker.bindPopup(popupContent);
+
+                return marker;
             }
         }).then(data => {
             var trainAccidentsCluster = L.markerClusterGroup();
