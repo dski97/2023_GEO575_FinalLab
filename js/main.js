@@ -184,6 +184,7 @@ document.addEventListener('DOMContentLoaded', () => {
             filterTrainAccidents('All', accidentType);
         });
         
+        //add event listener to the dropdown
         document.getElementById('accident-type-dropdown').addEventListener('change', function (event) {
             const accidentType = event.target.value;
             const year = document.getElementById('year-input').value === '0' ? 'All' : parseInt(document.getElementById('year-input').value);
