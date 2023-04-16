@@ -41,3 +41,20 @@ body, html {
     width: 100%;
     margin-top: 5px;
 }
+
+#accident-count-container {
+    position: absolute;
+    bottom: 90px;
+    left: 10px;
+    z-index: 1000;
+    background-color: white;
+    padding: 10px;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    border-radius: 4px;
+    font-family: Arial, sans-serif;
+    font-size: 14px;
+}
+
+#accident-count-container p {
+    margin: 0;
+}

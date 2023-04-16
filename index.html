@@ -27,14 +27,24 @@
     <label for="accident-type-dropdown">Accident Type: </label>
     <select id="accident-type-dropdown">
         <option value="All">All</option>
+        <option value="Broken Train Collision">Broken Train Collision</option>
+        <option value="Derailment">Derailment</option>
+        <option value="Fire / Violent Rupture">Fire / Violent Rupture</option>
+        <option value="Head On Collision">Head On Collision</option>
         <option value="Highway-Rail Crossing">Highway-Rail Crossing</option>
+        <option value="Obstruction">Obstruction</option>
+        <option value="Other Impacts">Other Impacts</option>
+        <option value="Raking Collision">Raking Collision</option>
+        <option value="Rearend Collision">Rearend Collision</option>
+        <option value="RR Grade Crossing">RR Grade Crossing</option>
+        <option value="Side Collision">Side Collision</option>
         <option value="Other (Described in Narrative)">Other (Described in Narrative)</option>
-        <!-- Add more options here -->
     </select>
+
+    <div id="accident-count-container">
+    <p>Visible Accidents: <span id="accident-count">0</span></p>
 </div>
-
-
-
+</div>
     <script type="text/javascript" src="lib/jquery-3.5.1.js"></script>
     <script src="lib/leaflet/leaflet-src.js"></script>
     <script src="lib/leaflet-providers.js"></script>
