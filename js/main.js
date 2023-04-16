@@ -148,6 +148,11 @@ document.addEventListener('DOMContentLoaded', () => {
         }, 0);
     }
 
+    //update accident count
+    function updateAccidentCount(count) {
+        document.getElementById('accident-count').textContent = count;
+    }
+
     //function to filter train accidents by the type of accident
     function filterTrainAccidentsByAccidentType(year, accidentType) {
         // Add the loading-cursor class to the body element
@@ -179,6 +184,8 @@ document.addEventListener('DOMContentLoaded', () => {
     let trainAccidentsData;
     let trainAccidentsCluster = L.markerClusterGroup();
 
+    map.addLayer(trainAccidentsCluster);
+
     // Wait for all GeoJSON layers to load before adding the layer control
     Promise.all([
         // Load TrainAccidents geojson file and add it to a marker cluster group
@@ -202,6 +209,7 @@ document.addEventListener('DOMContentLoaded', () => {
             trainAccidentsData = data;
             trainAccidentsData.eachLayer(layer => trainAccidentsCluster.addLayer(layer));
             overlayLayers["Train Accidents"] = trainAccidentsCluster;
+            updateAccidentCount(trainAccidentsCluster.getLayers().length);
 
          //add evemt listener to the slider
          document.getElementById('year-input').addEventListener('input', function (event) {
