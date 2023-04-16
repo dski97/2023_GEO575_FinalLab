@@ -17,11 +17,21 @@
 <body>
     <div id="map"></div>
 
-    <div id="year-slider">
-        <label for="year-input">Year: <span id="year-label">All</span></label>
-        <input type="range" id="year-input" min="2012" max="2022" value="0" step="1">
-        <button id="year-reset">All</button>
-    </div>
+   <div id="year-slider">
+    <label for="year-input">Year: <span id="year-label">All</span></label>
+    <input type="range" id="year-input" min="2012" max="2022" value="0" step="1">
+    <button id="year-reset">All</button>
+</div>
+
+<div id="accident-type-dropdown-container">
+    <label for="accident-type-dropdown">Accident Type: </label>
+    <select id="accident-type-dropdown">
+        <option value="All">All</option>
+        <option value="Highway-Rail Crossing">Highway-Rail Crossing</option>
+        <option value="Other (Described in Narrative)">Other (Described in Narrative)</option>
+        <!-- Add more options here -->
+    </select>
+</div>
 
 
 
