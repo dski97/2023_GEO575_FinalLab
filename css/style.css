@@ -44,7 +44,7 @@ body, html {
 
 #accident-count-container {
     position: absolute;
-    bottom: 90px;
+    bottom: 120px;
     left: 10px;
     z-index: 1000;
     background-color: white;
@@ -57,4 +57,50 @@ body, html {
 
 #accident-count-container p {
     margin: 0;
+}
+
+/* Search box container */
+.search-container {
+    position: relative;
+    margin: 20px;
+}
+
+/* Search box input */
+#railroad-company-search {
+    padding: 10px;
+    width: 200px;
+    font-size: 17px;
+    border: 2px solid #ccc;
+    border-radius: 5px;
+    outline: none;
+}
+
+/* Search box input on focus */
+#railroad-company-search:focus {
+    border-color: #66afe9;
+}
+
+/* Autocomplete items container */
+.autocomplete-items {
+    position: absolute;
+    border: 1px solid #d4d4d4;
+    border-bottom: none;
+    border-top: none;
+    z-index: 99;
+    top: 100%;
+    left: 0;
+    right: 0;
+}
+
+/* Autocomplete items */
+.autocomplete-items div {
+    padding: 10px;
+    cursor: pointer;
+    background-color: #fff;
+    border-bottom: 1px solid #d4d4d4;
+}
+
+/* Autocomplete item on hover */
+.autocomplete-items div:hover {
+    background-color: #e9e9e9;
 }

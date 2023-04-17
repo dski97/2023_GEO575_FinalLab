@@ -38,6 +38,104 @@ document.addEventListener('DOMContentLoaded', () => {
         return L.geoJSON(data, options);
     };
 
+    //auto complete search bar
+    const railroadCompanyNames = [
+        // Add the railroad company names here, e.g.:
+        "Company A",
+        "Company B",
+        "Company C",
+        // ...
+    ];
+    
+    function autocomplete(input, data) {
+        let currentFocus;
+    
+        input.addEventListener("input", function () {
+            let list, item, value = this.value;
+    
+            closeAllLists();
+            if (!value) {
+                return false;
+            }
+            currentFocus = -1;
+            list = document.createElement("div");
+            list.setAttribute("id", this.id + "-autocomplete-list");
+            list.setAttribute("class", "autocomplete-items");
+            this.parentNode.appendChild(list);
+    
+            for (let i = 0; i < data.length; i++) {
+                if (data[i].substr(0, value.length).toUpperCase() === value.toUpperCase()) {
+                    item = document.createElement("div");
+                    item.innerHTML = "<strong>" + data[i].substr(0, value.length) + "</strong>";
+                    item.innerHTML += data[i].substr(value.length);
+                    item.innerHTML += "<input type='hidden' value='" + data[i] + "'>";
+                    item.addEventListener("click", function () {
+                        input.value = this.getElementsByTagName("input")[0].value;
+                        closeAllLists();
+                        // Call your filter function here with the selected company name
+                        // e.g. filterTrainAccidents(year, accidentType, input.value);
+                    });
+                    list.appendChild(item);
+                }
+            }
+        });
+    
+        input.addEventListener("keydown", function (e) {
+            let items = document.getElementById(this.id + "-autocomplete-list");
+            if (items) {
+                items = items.getElementsByTagName("div");
+            }
+            if (e.keyCode === 40) { // Arrow down
+                currentFocus++;
+                setActive(items);
+            } else if (e.keyCode === 38) { // Arrow up
+                currentFocus--;
+                setActive(items);
+            } else if (e.keyCode === 13) { // Enter
+                e.preventDefault();
+                if (currentFocus > -1 && items) {
+                    items[currentFocus].click();
+                }
+            }
+        });
+    
+        function setActive(items) {
+            if (!items) {
+                return false;
+            }
+            removeActive(items);
+            if (currentFocus >= items.length) {
+                currentFocus = 0;
+            }
+            if (currentFocus < 0) {
+                currentFocus = items.length - 1;
+            }
+            items[currentFocus].classList.add("autocomplete-active");
+        }
+    
+        function removeActive(items) {
+            for (let i = 0; i < items.length; i++) {
+                items[i].classList.remove("autocomplete-active");
+            }
+        }
+    
+        function closeAllLists(element) {
+            let items = document.getElementsByClassName("autocomplete-items");
+            for (let i = 0; i < items.length; i++) {
+                if (element !== items[i] && element !== input) {
+                    items[i].parentNode.removeChild(items[i]);
+                }
+            }
+        }
+    
+        document.addEventListener("click", function (e) {
+            closeAllLists(e.target);
+        });
+    }
+    
+    const railroadCompanySearch = document.getElementById("railroad-company-search");
+    autocomplete(railroadCompanySearch, railroadCompanyNames);
+
     // Custom train station icon
     const trainStationIcon = L.icon({
         iconUrl: 'img/TrainStation.png',
