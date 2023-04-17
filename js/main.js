@@ -164,17 +164,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
          //add evemt listener to the slider
          document.getElementById('year-input').addEventListener('input', function (event) {
-            const year = event.target.value === '0' ? 'All' : parseInt(event.target.value)
+            const year = parseInt(event.target.value);
             const accidentType = document.getElementById('accident-type-dropdown').value;
             const yearLabel = document.getElementById('year-label');
-            if (year === 0) {
-                yearLabel.textContent = 'All';
-            } else {
-                yearLabel.textContent = year;
-            }
-            filterTrainAccidents(year, accidentType);
+            yearLabel.textContent = year === 2011 ? 'All' : year;
+            filterTrainAccidents(year === 2011 ? 'All' : year, accidentType);
         });
-        
+        //add event listener to the reset button
         document.getElementById('year-reset').addEventListener('click', function () {
             const accidentType = document.getElementById('accident-type-dropdown').value;
             const yearInput = document.getElementById('year-input');
@@ -187,7 +183,8 @@ document.addEventListener('DOMContentLoaded', () => {
         //add event listener to the dropdown
         document.getElementById('accident-type-dropdown').addEventListener('change', function (event) {
             const accidentType = event.target.value;
-            const year = document.getElementById('year-input').value === '0' ? 'All' : parseInt(document.getElementById('year-input').value);
+            const yearInput = document.getElementById('year-input');
+            const year = yearInput.value == '2011' ? 'All' : yearInput.value;
             filterTrainAccidents(year, accidentType);
         });
 
