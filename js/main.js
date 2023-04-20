@@ -169,7 +169,7 @@ document.addEventListener('DOMContentLoaded', () => {
             case 'Other (Described in Narrative)':
                 return 'img/Other.png';
             case 'Derailment':
-                return 'img/TrainDerailment.png';
+                return 'img/Derailment_Icon.png';
             case 'Broken Train Collision':
                 return 'img/BrokenTrain.png';
             case 'Fire / Violent Rupture':
@@ -241,7 +241,7 @@ document.addEventListener('DOMContentLoaded', () => {
         loadGeoJSON('data/TrainAccidents.geojson', {
             pointToLayer: (feature, latLng) => {
                 const iconUrl = getAccidentIcon(feature.properties['Type of Accident']);
-                const icon = L.icon({ iconUrl: iconUrl, iconSize: [25, 41], iconAnchor: [12, 41], popupAnchor: [0, -41] });
+                const icon = L.icon({ iconUrl: iconUrl, iconSize: [100, 100], iconAnchor: [12, 41], popupAnchor: [0, -41] });
 
                 const marker = L.marker(latLng, { icon: icon });
 
