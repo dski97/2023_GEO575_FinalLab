@@ -69,10 +69,11 @@ body, html {
 #railroad-company-search {
     padding: 10px;
     width: 200px;
-    font-size: 17px;
+    font-size: 12px;
     border: 2px solid #ccc;
     border-radius: 5px;
     outline: none;
+    height: auto; /* Adjust the height as needed */
 }
 
 /* Search box input on focus */
@@ -90,7 +91,10 @@ body, html {
     top: 100%;
     left: 0;
     right: 0;
+    max-height: calc(7 * 40px);
+    overflow-y: scroll;
 }
+
 
 /* Autocomplete items */
 .autocomplete-items div {
