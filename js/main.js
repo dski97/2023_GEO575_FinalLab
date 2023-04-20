@@ -37,9 +37,16 @@ document.addEventListener('DOMContentLoaded', () => {
     var initialZoom = 4;
 
     // Create a Leaflet easyButton and add it to the map
-    L.easyButton('fa-home', function(btn, map){
-        map.setView([initialLat, initialLng], initialZoom);
-    }, 'Zoom to original extent').addTo(map);
+    L.easyButton({
+        states: [{
+            stateName: 'home',
+            icon: '&#x1f3e0;', // Unicode house character
+            title: 'Zoom to original extent',
+            onClick: function (btn, map) {
+                map.setView([initialLat, initialLng], initialZoom);
+            }
+        }]
+    }).addTo(map);
 
 
     // Function to load GeoJSON data and return the layer
