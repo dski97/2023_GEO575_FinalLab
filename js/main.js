@@ -254,8 +254,25 @@ document.addEventListener('DOMContentLoaded', () => {
                 const marker = L.marker(latLng, { icon: icon });
 
                 // Create a popup with all the properties from the GeoJSON feature
-                const popupContent = Object.entries(feature.properties)
-                    .map(([key, value]) => `<b>${key}:</b> ${value}`)
+                // Create an array of the properties you want to display in the popup, with their display names
+                const displayProperties = [
+                    { key: 'Date', displayName: 'Date' },
+                    { key: 'Railroad', displayName: 'Railroad' },
+                    { key: 'Time', displayName: 'Time' },
+                    { key: 'AM or PM', displayName: 'AM or PM' },
+                    { key: 'Type of Accident', displayName: 'Type of Accident' },
+                    { key: 'Temperature (F)', displayName: 'Temperature (F)' },
+                    { key: 'Visibility', displayName: 'Visibility' },
+                    { key: 'Weather', displayName: 'Weather' },
+                    { key: 'Total Reportable Damage on All Reports in $', displayName: 'Total Reportable Damage $' },
+                    { key: 'Total Injured', displayName: 'Total Injured' },
+                    { key: 'Total Killed', displayName: 'Total Killed' },
+                    { key: 'Narrative', displayName: 'Report of Event' }
+                ];
+                
+                // Create the popup content by mapping the display properties to a string of HTML
+                const popupContent = displayProperties
+                    .map(({ key, displayName }) => `<b>${displayName}:</b> ${feature.properties[key]}`)
                     .join('<br>');
 
                 marker.bindPopup(popupContent);
