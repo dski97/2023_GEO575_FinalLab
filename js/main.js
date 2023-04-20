@@ -39,14 +39,13 @@ document.addEventListener('DOMContentLoaded', () => {
     };
 
     //auto complete search bar
-    const railroadCompanyNames = [
-        // Add the railroad company names here, e.g.:
-        "Company A",
-        "Company B",
-        "Company C",
-        // ...
-    ];
-    
+   async function loadRailroadCompanyNames() {
+    const response = await fetch('data/RailNames.txt');
+    const text = await response.text();
+    return text.split('\n');
+}
+
+    //autocomplete the search bar
     function autocomplete(input, data) {
         let currentFocus;
     
@@ -73,7 +72,11 @@ document.addEventListener('DOMContentLoaded', () => {
                         input.value = this.getElementsByTagName("input")[0].value;
                         closeAllLists();
                         // Call your filter function here with the selected company name
-                        // e.g. filterTrainAccidents(year, accidentType, input.value);
+                        const yearInput = document.getElementById('year-input');
+                        const year = yearInput.value == '2011' ? 'All' : yearInput.value;
+                        const accidentType = document.getElementById('accident-type-dropdown').value;
+                        const companyName = input.value;
+                        filterTrainAccidents(year, accidentType, companyName);
                     });
                     list.appendChild(item);
                 }
@@ -127,14 +130,12 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
             }
         }
-    
-        document.addEventListener("click", function (e) {
-            closeAllLists(e.target);
-        });
     }
     
-    const railroadCompanySearch = document.getElementById("railroad-company-search");
-    autocomplete(railroadCompanySearch, railroadCompanyNames);
+    loadRailroadCompanyNames().then(railroadCompanyNames => {
+        const railroadCompanySearch = document.getElementById("railroad-company-search");
+        autocomplete(railroadCompanySearch, railroadCompanyNames);
+    });
 
     // Custom train station icon
     const trainStationIcon = L.icon({
@@ -193,8 +194,8 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 }
 
-    //consildated function to filter train accidents by year and type of accident
-    function filterTrainAccidents(year, accidentType) {
+    //consildated function to filter train accidents by year and type of accident, and railroad company name
+    function filterTrainAccidents(year, accidentType, companyName) {
         // Add the loading-cursor class to the body element
         document.body.classList.add('loading-cursor');
     
@@ -207,7 +208,8 @@ document.addEventListener('DOMContentLoaded', () => {
             trainAccidentsData.eachLayer(layer => {
                 if (
                     (year === 'All' || layer.feature.properties.Year === year) &&
-                    (accidentType === 'All' || layer.feature.properties['Type of Accident'] === accidentType)
+                    (accidentType === 'All' || layer.feature.properties['Type of Accident'] === accidentType) &&
+                    (companyName === 'All' || layer.feature.properties['Railroad'] === companyName)
                 ) {
                     trainAccidentsCluster.addLayer(layer);
                 }
@@ -264,18 +266,20 @@ document.addEventListener('DOMContentLoaded', () => {
          document.getElementById('year-input').addEventListener('input', function (event) {
             const year = parseInt(event.target.value);
             const accidentType = document.getElementById('accident-type-dropdown').value;
+            const companyName = document.getElementById('railroad-company-search').value || 'All';
             const yearLabel = document.getElementById('year-label');
             yearLabel.textContent = year === 2011 ? 'All' : year;
-            filterTrainAccidents(year === 2011 ? 'All' : year, accidentType);
+            filterTrainAccidents(year === 2011 ? 'All' : year, accidentType, companyName);
         });
         //add event listener to the reset button
         document.getElementById('year-reset').addEventListener('click', function () {
             const accidentType = document.getElementById('accident-type-dropdown').value;
+            const companyName = document.getElementById('railroad-company-search').value || 'All';
             const yearInput = document.getElementById('year-input');
             const yearLabel = document.getElementById('year-label');
             yearInput.value = '0';
             yearLabel.textContent = 'All';
-            filterTrainAccidents('All', accidentType);
+            filterTrainAccidents('All', accidentType, companyName);
         });
         
         //add event listener to the dropdown
@@ -283,7 +287,8 @@ document.addEventListener('DOMContentLoaded', () => {
             const accidentType = event.target.value;
             const yearInput = document.getElementById('year-input');
             const year = yearInput.value == '2011' ? 'All' : yearInput.value;
-            filterTrainAccidents(year, accidentType);
+            const companyName = document.getElementById('railroad-company-search').value || 'All';
+            filterTrainAccidents(year, accidentType, companyName);
         });
 
         }),
