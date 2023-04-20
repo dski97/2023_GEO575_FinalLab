@@ -157,7 +157,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Custom train station icon
     const trainStationIcon = L.icon({
-        iconUrl: 'img/TrainStation.png',
+        iconUrl: 'img/Train_Station_Icon.png',
         iconSize: [25, 25], // Set the size of the icon, if needed
         iconAnchor: [12, 25], // Set the anchor point of the icon, if needed
         popupAnchor: [0, -25] // Set the anchor point of the popup, if needed
@@ -182,35 +182,23 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Function to get the appropriate icon based on the "Type of Accident" value
     function getAccidentIcon(typeOfAccident) {
-        switch (typeOfAccident) {
-            case 'Highway-Rail Crossing':
-                return 'img/HighwayRail.gif';
-            case 'Other (Described in Narrative)':
-                return 'img/Other.png';
-            case 'Derailment':
-                return 'img/Derailment_Icon.png';
-            case 'Broken Train Collision':
-                return 'img/BrokenTrain.png';
-            case 'Fire / Violent Rupture':
-                return 'img/Fire.png';
-            case 'Head On Collision':
-                return 'img/Collision.png';
-            case 'Obstruction':
-                return 'img/Obstruction.png';
-            case "Other Impacts":
-                return 'img/OtherImpact.png';
-            case 'Raking Collision':
-                return 'img/Raking.png';
-            case 'Rearend Collision':
-                return 'img/RearEnd.png';
-            case 'RR Grade Crossing':
-                return 'img/RRCrossing.png';
-            case 'Side Collision':
-                return 'img/SideHit.png';
-            default:
-                return 'img/Train.png'; // Set a default icon in case the value doesn't match any cases
-        }
-}
+        const iconMap = {
+            'Highway-Rail Crossing': 'img/Highway_Rail_Crossing_Icon.png',
+            'Other (Described in Narrative)': 'img/Other_Icon.png',
+            'Derailment': 'img/Derailment_Icon.png',
+            'Broken Train Collision': 'img/Broken_Train_Icon.png',
+            'Fire / Violent Rupture': 'img/Fire_Icon.png',
+            'Head On Collision': 'img/Head_on_Collision_Icon.png',
+            'Obstruction': 'img/Obstruction_Icon.png',
+            'Other Impacts': 'img/Other_Impacts_Icon.png',
+            'Raking Collision': 'img/Raking_Collision_Icon.png',
+            'Rearend Collision': 'img/Rearend_Collision_Icon.png',
+            'RR Grade Crossing': 'img/RR_Grade_Crossing_Icon.png',
+            'Side Collision': 'img/Side_Hit_Icon.png'
+        };
+    
+        return iconMap[typeOfAccident] || 'img/Train.png'; // Use the default icon if the value is not found in the map
+    }
 
     //consildated function to filter train accidents by year and type of accident, and railroad company name
     function filterTrainAccidents(year, accidentType, companyName) {
