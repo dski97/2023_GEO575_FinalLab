@@ -31,6 +31,17 @@ document.addEventListener('DOMContentLoaded', () => {
         "Stamen Toner": stamenToner
     };
 
+    // initial zoom level for return to original extent button
+    var initialLat = 37.8;
+    var initialLng = -96.0;
+    var initialZoom = 4;
+
+    // Create a Leaflet easyButton and add it to the map
+    L.easyButton('fa-home', function(btn, map){
+        map.setView([initialLat, initialLng], initialZoom);
+    }, 'Zoom to original extent').addTo(map);
+
+
     // Function to load GeoJSON data and return the layer
     const loadGeoJSON = async (url, options) => {
         const response = await fetch(url);
