@@ -14,6 +14,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Create an object containing all basemaps
     const baseMaps = { "OpenStreetMap": osm, "Carto Light": cartoLight, "Stamen Toner": stamenToner };
 
+    
 
     // Create a Leaflet easyButton and add it to the map
     L.easyButton({
@@ -279,11 +280,11 @@ document.addEventListener('DOMContentLoaded', () => {
         
         //add event listener to the dropdown
             document.getElementById('accident-type-dropdown').addEventListener('change', function (event) {
-                const accidentType = event.target.value;
-                const yearInput = document.getElementById('year-input');
-                const year = yearInput.value == '2011' ? 'All' : yearInput.value;
-                const companyName = document.getElementById('railroad-company-search').value || 'All';
-                filterTrainAccidents(year, accidentType, companyName);
+            const accidentType = event.target.value;
+            const yearInput = document.getElementById('year-input');
+            const year = yearInput.value == '2011' ? 'All' : yearInput.value;
+            const companyName = document.getElementById('railroad-company-search').value || 'All';
+            filterTrainAccidents(year, accidentType, companyName);
         });
 
         }),
