@@ -47,49 +47,7 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         }]
     }).addTo(map);
-
-    //search bar function
-document.getElementById('geocode-search-input').addEventListener('input', async function (event) {
-    const query = event.target.value;
-    if (!query) {
-      document.getElementById('geocode-search-results').innerHTML = '';
-      return;
-    }
-  
-    const searchResults = await searchUSAddresses(query);
-    displaySearchResults(searchResults);
-  });
-  
-  async function searchUSAddresses(query) {
-    const url = `https://nominatim.openstreetmap.org/search?format=json&q=${encodeURIComponent(query)}&countrycodes=us&addressdetails=1&limit=5`;
-    const response = await fetch(url);
-    const data = await response.json();
-    return data;
-  }
-  
-  function displaySearchResults(results) {
-    const searchResultsContainer = document.getElementById('geocode-search-results');
-    searchResultsContainer.innerHTML = '';
-  
-    if (results.length === 0) {
-      searchResultsContainer.innerHTML = '<div>No results found</div>';
-      return;
-    }
-  
-    results.forEach(result => {
-      const resultDiv = document.createElement('div');
-      resultDiv.innerHTML = result.display_name;
-      resultDiv.addEventListener('click', () => {
-        const lat = parseFloat(result.lat);
-        const lon = parseFloat(result.lon);
-        map.flyTo([lat, lon], 16);
-        searchResultsContainer.innerHTML = '';
-      });
-      searchResultsContainer.appendChild(resultDiv);
-    });
-  }
-  
-
+    
     // Function to load GeoJSON data and return the layer
     const loadGeoJSON = async (url, options) => {
         const response = await fetch(url);
