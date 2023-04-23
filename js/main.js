@@ -13,7 +13,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Create an object containing all basemaps
     const baseMaps = { "OpenStreetMap": osm, "Carto Light": cartoLight, "Stamen Toner": stamenToner };
-    
+
     //initialize the layer control
     const initialLat = 37.8, initialLng = -96.0, initialZoom = 4;
 
@@ -36,12 +36,12 @@ document.addEventListener('DOMContentLoaded', () => {
         return L.geoJSON(data, options);
     };
 
-    //auto complete search bar
-   async function loadRailroadCompanyNames() {
-    const response = await fetch('data/RailNames.txt');
-    const text = await response.text();
-    return text.split('\n');
-}
+    //load railroad names
+    const loadRailroadCompanyNames = async () => {
+        const response = await fetch('data/RailNames.txt');
+        const text = await response.text();
+        return text.split('\n');
+    };
 
     //autocomplete the search bar
     function autocomplete(input, data) {
@@ -69,7 +69,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     item.addEventListener("click", function () {
                         input.value = this.getElementsByTagName("input")[0].value;
                         closeAllLists();
-                        // Call your filter function here with the selected company name
+                        // Calling the filter function here with the selected company name
                         const yearInput = document.getElementById('year-input');
                         const year = yearInput.value == '2011' ? 'All' : yearInput.value;
                         const accidentType = document.getElementById('accident-type-dropdown').value;
@@ -138,19 +138,19 @@ document.addEventListener('DOMContentLoaded', () => {
     // Custom train station icon
     const trainStationIcon = L.icon({
         iconUrl: 'img/Train_Station_Icon.png',
-        iconSize: [25, 25], // Set the size of the icon, if needed
-        iconAnchor: [12, 25], // Set the anchor point of the icon, if needed
-        popupAnchor: [0, -25] // Set the anchor point of the popup, if needed
+        iconSize: [25, 25], 
+        iconAnchor: [12, 25],
+        popupAnchor: [0, -25] 
     });
 
     // Custom style for train track lines
     const trainTrackStyle = {
-        color: '#000000', // Set the color of the lines
-        weight: 5, // Set the width of the lines
-        opacity: 0.5, // Set the opacity of the lines
-        dashArray: '1, 10', // Set the dash pattern for the lines
-        lineCap: 'round', // Set the line cap style
-        lineJoin: 'round' // Set the line join style
+        color: '#000000', 
+        weight: 5, 
+        opacity: 0.5, 
+        dashArray: '1, 10', 
+        lineCap: 'round', 
+        lineJoin: 'round'
     };
     
     // Custom style for highlighted train track lines
@@ -220,7 +220,6 @@ document.addEventListener('DOMContentLoaded', () => {
     //declare trainAccidentsData and trainAccidentsCluster
     let trainAccidentsData;
     let trainAccidentsCluster = L.markerClusterGroup();
-
     map.addLayer(trainAccidentsCluster);
 
     // Wait for all GeoJSON layers to load before adding the layer control
@@ -230,10 +229,7 @@ document.addEventListener('DOMContentLoaded', () => {
             pointToLayer: (feature, latLng) => {
                 const iconUrl = getAccidentIcon(feature.properties['Type of Accident']);
                 const icon = L.icon({ iconUrl: iconUrl, iconSize: [100, 100], iconAnchor: [12, 41], popupAnchor: [0, -41] });
-
                 const marker = L.marker(latLng, { icon: icon });
-
-                // Create a popup with all the properties from the GeoJSON feature
                 // Create an array of the properties you want to display in the popup, with their display names
                 const displayProperties = [
                     { key: 'Date', displayName: 'Date' },
@@ -254,9 +250,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 const popupContent = displayProperties
                     .map(({ key, displayName }) => `<b>${displayName}:</b> ${feature.properties[key]}`)
                     .join('<br>');
-
                 marker.bindPopup(popupContent);
-
                 return marker;
             }
         }).then(data => {
