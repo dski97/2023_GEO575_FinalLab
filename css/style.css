@@ -48,7 +48,7 @@ body, html {
     left: 10px;
     z-index: 1000;
     background-color: white;
-    padding: 10px;
+    padding: 15px;
     border: 1px solid rgba(0, 0, 0, 0.2);
     border-radius: 4px;
     font-family: Arial, sans-serif;
@@ -73,7 +73,7 @@ body, html {
     border: 2px solid #ccc;
     border-radius: 5px;
     outline: none;
-    height: auto; /* Adjust the height as needed */
+    height: auto; 
 }
 
 /* Search box input on focus */
@@ -108,3 +108,28 @@ body, html {
 .autocomplete-items div:hover {
     background-color: #e9e9e9;
 }
+
+#geocode-search-container {
+    position: absolute;
+    top: 120px; 
+    left: 10px;
+    z-index: 1000;
+  }
+  
+  #geocode-search-input {
+    width: 300px;
+    padding: 5px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  
+  #geocode-search-results {
+    margin-top: 5px;
+    max-height: 200px;
+    overflow-y: auto;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: white;
+  }
+  
