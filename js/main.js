@@ -14,8 +14,6 @@ document.addEventListener('DOMContentLoaded', () => {
     // Create an object containing all basemaps
     const baseMaps = { "OpenStreetMap": osm, "Carto Light": cartoLight, "Stamen Toner": stamenToner };
 
-    //initialize the layer control
-    const initialLat = 37.8, initialLng = -96.0, initialZoom = 4;
 
     // Create a Leaflet easyButton and add it to the map
     L.easyButton({
@@ -24,7 +22,7 @@ document.addEventListener('DOMContentLoaded', () => {
             icon: '&#x1f3e0;', // Unicode house character
             title: 'Zoom to original extent',
             onClick: function (btn, map) {
-                map.setView([initialLat, initialLng], initialZoom);
+                map.setView([37.8, -96], 4);
             }
         }]
     }).addTo(map);
@@ -260,32 +258,32 @@ document.addEventListener('DOMContentLoaded', () => {
             updateAccidentCount(trainAccidentsCluster.getLayers().length);
 
          //add evemt listener to the slider
-         document.getElementById('year-input').addEventListener('input', function (event) {
-            const year = parseInt(event.target.value);
-            const accidentType = document.getElementById('accident-type-dropdown').value;
-            const companyName = document.getElementById('railroad-company-search').value || 'All';
-            const yearLabel = document.getElementById('year-label');
-            yearLabel.textContent = year === 2011 ? 'All' : year;
-            filterTrainAccidents(year === 2011 ? 'All' : year, accidentType, companyName);
+            document.getElementById('year-input').addEventListener('input', function (event) {
+                const year = parseInt(event.target.value);
+                const accidentType = document.getElementById('accident-type-dropdown').value;
+                const companyName = document.getElementById('railroad-company-search').value || 'All';
+                const yearLabel = document.getElementById('year-label');
+                yearLabel.textContent = year === 2011 ? 'All' : year;
+                filterTrainAccidents(year === 2011 ? 'All' : year, accidentType, companyName);
         });
         //add event listener to the reset button
-        document.getElementById('year-reset').addEventListener('click', function () {
-            const accidentType = document.getElementById('accident-type-dropdown').value;
-            const companyName = document.getElementById('railroad-company-search').value || 'All';
-            const yearInput = document.getElementById('year-input');
-            const yearLabel = document.getElementById('year-label');
-            yearInput.value = '0';
-            yearLabel.textContent = 'All';
-            filterTrainAccidents('All', accidentType, companyName);
+            document.getElementById('year-reset').addEventListener('click', function () {
+                const accidentType = document.getElementById('accident-type-dropdown').value;
+                const companyName = document.getElementById('railroad-company-search').value || 'All';
+                const yearInput = document.getElementById('year-input');
+                const yearLabel = document.getElementById('year-label');
+                yearInput.value = '0';
+                yearLabel.textContent = 'All';
+                filterTrainAccidents('All', accidentType, companyName);
         });
         
         //add event listener to the dropdown
-        document.getElementById('accident-type-dropdown').addEventListener('change', function (event) {
-            const accidentType = event.target.value;
-            const yearInput = document.getElementById('year-input');
-            const year = yearInput.value == '2011' ? 'All' : yearInput.value;
-            const companyName = document.getElementById('railroad-company-search').value || 'All';
-            filterTrainAccidents(year, accidentType, companyName);
+            document.getElementById('accident-type-dropdown').addEventListener('change', function (event) {
+                const accidentType = event.target.value;
+                const yearInput = document.getElementById('year-input');
+                const year = yearInput.value == '2011' ? 'All' : yearInput.value;
+                const companyName = document.getElementById('railroad-company-search').value || 'All';
+                filterTrainAccidents(year, accidentType, companyName);
         });
 
         }),
