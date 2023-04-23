@@ -1,40 +1,21 @@
 document.addEventListener('DOMContentLoaded', () => {
     // Create map
     const map = L.map('map').setView([37.8, -96], 4);
-
-    // Create basemap layers
-    const osm = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-        maxZoom: 18,
-        minZoom: 2,
-        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-    });
-
-    const cartoLight = L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
-        maxZoom: 18,
-        minZoom: 2,
-        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>'
-    });
-
-    const stamenToner = L.tileLayer('https://stamen-tiles-{s}.a.ssl.fastly.net/toner/{z}/{x}/{y}{r}.png', {
-        maxZoom: 18,
-        minZoom: 2,
-        attribution: 'Map tiles by <a href="http://stamen.com">Stamen Design</a>, <a href="http://creativecommons.org/licenses/by/3.0">CC BY 3.0</a> &mdash; Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-    });
+    
+    //basemap tile options
+    const tileLayerOptions = { maxZoom: 18, minZoom: 2, attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors' };
+    const osm = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', tileLayerOptions);
+    const cartoLight = L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', { ...tileLayerOptions, attribution: tileLayerOptions.attribution + ' &copy; <a href="https://carto.com/attributions">CARTO</a>' });
+    const stamenToner = L.tileLayer('https://stamen-tiles-{s}.a.ssl.fastly.net/toner/{z}/{x}/{y}{r}.png', { ...tileLayerOptions, attribution: 'Map tiles by <a href="http://stamen.com">Stamen Design</a>, <a href="http://creativecommons.org/licenses/by/3.0">CC BY 3.0</a> &mdash; ' + tileLayerOptions.attribution });
 
     // Add default basemap to the map
     osm.addTo(map);
 
     // Create an object containing all basemaps
-    const baseMaps = {
-        "OpenStreetMap": osm,
-        "Carto Light": cartoLight,
-        "Stamen Toner": stamenToner
-    };
-
-    // initial zoom level for return to original extent button
-    var initialLat = 37.8;
-    var initialLng = -96.0;
-    var initialZoom = 4;
+    const baseMaps = { "OpenStreetMap": osm, "Carto Light": cartoLight, "Stamen Toner": stamenToner };
+    
+    //initialize the layer control
+    const initialLat = 37.8, initialLng = -96.0, initialZoom = 4;
 
     // Create a Leaflet easyButton and add it to the map
     L.easyButton({
@@ -47,7 +28,7 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         }]
     }).addTo(map);
-    
+
     // Function to load GeoJSON data and return the layer
     const loadGeoJSON = async (url, options) => {
         const response = await fetch(url);
