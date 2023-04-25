@@ -137,19 +137,19 @@ document.addEventListener('DOMContentLoaded', () => {
     // Custom train station icon
     const trainStationIcon = L.icon({
         iconUrl: 'img/Train_Station_Icon.png',
-        iconSize: [25, 25], 
+        iconSize: [65, 65], 
         iconAnchor: [12, 25],
         popupAnchor: [0, -25] 
     });
 
     // Custom style for train track lines
     const trainTrackStyle = {
-        color: '#000000', 
-        weight: 5, 
-        opacity: 0.5, 
-        dashArray: '1, 10', 
-        lineCap: 'round', 
-        lineJoin: 'round'
+        color: '#808080', 
+        weight: 6, 
+        opacity: 0.8, 
+        dashArray: '3, 15', 
+        lineCap: 'square', 
+        lineJoin: 'square'
     };
     
     // Custom style for highlighted train track lines
@@ -234,7 +234,6 @@ document.addEventListener('DOMContentLoaded', () => {
                     { key: 'Date', displayName: 'Date' },
                     { key: 'Railroad', displayName: 'Railroad' },
                     { key: 'Time', displayName: 'Time' },
-                    { key: 'AM or PM', displayName: 'AM or PM' },
                     { key: 'Type of Accident', displayName: 'Type of Accident' },
                     { key: 'Temperature (F)', displayName: 'Temperature (F)' },
                     { key: 'Visibility', displayName: 'Visibility' },
