@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>USA Train Accidents</title>
+
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <link rel="stylesheet" href="lib/leaflet/leaflet.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.4.1/dist/MarkerCluster.css" />
+    <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.4.1/dist/MarkerCluster.Default.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet-easybutton@2.4.0/src/easy-button.css">
+    
+    
+</head>
+<body>
+    <div class="main">
+        <div class="header">
+         <h1>USA Train Accidents 2012 - 2022 </h1>
+             <button class="btn" type="button" id="about-button"> About</button>
+        </div>
+        <div id="about-modal" class="modal">
+    <div class="modal-content">
+      <span class="close">&times;</span>
+      <h2>USA Train Accidents 2012 - 2022</h2>
+      <p><br>Welcome! This tool is for members of the general public who have an interest in learning about rail accidents in the United States over the last 10 years. If interested in a specific accident use the provided dropdown filters, or if interested in seeing trends over time toggle through the time slider in the upper left.
+      <br>
+      <br>
+      Railroad line data was obtained from xxxx. 
+      <br>
+      <br>
+      This site was created by UW Madison students Domonic Cwalinski and Lisa Siewert in May 2023.
+      </p>
+    </div>
+  </div>
+<div class= "time-slider">
+    <div class ="checkbox-box">
+        <input type="checkbox" name="show-all-years" id="show-all-years" checked />
+        <label for="show-all-years">Show All Years</label>
+    </div>
+    <div class="slider-box disabled">
+      <label for="time-slider" id="current-time">--</label>
+      <input type="range" class="slider" id="time-slider" />
+    </div>
+</div>
+<div class = "sidebar">
+    <div class = "accident-type-dropdown-container">
+       <label for="accident-type-dropdown">View By Accident Type: </label>
+       <select id="accident-type-dropdown">
+           <option value="All">All</option>
+           <option value="Broken Train Collision">Broken Train Collision</option>
+           <option value="Derailment">Derailment</option>
+            <option value="Fire / Violent Rupture">Fire / Violent Rupture</option>
+            <option value="Head On Collision">Head On Collision</option>
+            <option value="Highway-Rail Crossing">Highway-Rail Crossing</option>
+            <option value="Obstruction">Obstruction</option>
+            <option value="Other Impacts">Other Impacts</option>
+            <option value="Raking Collision">Raking Collision</option>
+            <option value="Rearend Collision">Rearend Collision</option>
+            <option value="RR Grade Crossing">RR Grade Crossing</option>
+            <option value="Side Collision">Side Collision</option>
+            <option value="Other (Described in Narrative)">Other (Described in Narrative)</option>
+        </select>
+    </div>
+    <div class="accident-count-container">
+        <p>Visible Accidents: <span id="accident-count">0</span></p>
+    </div>
+    <div class="railroad-company-search-container">
+        <label for="railroad-company-search">Railroad Company Name: </label>
+        <input type="text" id="railroad-company-search" placeholder="Search...">
+    </div>
+    <div class="legend-container">
+            <img src="img/Legend.png" width="300" height="400">
+    </div>
+</div>
+<div class="map">
+  <div id="map"></div>  
+</div>
+</div>
+            
+    <script type="text/javascript" src="lib/jquery-3.5.1.js"></script>
+    <script src="lib/leaflet/leaflet-src.js"></script>
+    <script src="lib/leaflet-providers.js"></script>
+    <script type="text/javascript" src="js/main.js"></script>
+    <script src="https://unpkg.com/leaflet.markercluster@1.4.1/dist/leaflet.markercluster.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/leaflet-easybutton@2.4.0/src/easy-button.js"></script>>
+
+</body>
+</html>

@@ -17,7 +17,7 @@
 }
 
 #filters-container {
-    position: fixed;
+    position: relative;
     left: 0;
     top: calc(10px + 30px + 20px); 
     width: 20%; 
@@ -161,4 +161,198 @@ body, html {
 /* Autocomplete item on hover */
 .autocomplete-items div:hover {
     background-color: #e9e9e9;
+}
+
+#legend-container {
+    position:absolute;
+    bottom:0px
+}
+
+  /* Set height of the grid so .sidenav can be 100% (adjust if needed) */
+    .row.content {height: 1500px}
+    
+    /* Set gray background color and 100% height */
+    .sidenav {
+      background-color: #f1f1f1;
+      height: 100%;
+    }
+    
+    /* Set black background color, white text and some padding */
+    footer {
+      background-color: #555;
+      color: white;
+      padding: 15px;
+    }
+    
+    /* On small screens, set height to 'auto' for sidenav and grid */
+    @media screen and (max-width: 767px) {
+      .sidenav {
+        height: auto;
+        padding: 15px;
+      }
+      .row.content {height: auto;} 
+    }
+
+html, body {
+  height: 100%;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  font-size: 14px;
+}
+
+h1 {
+  font-size: 2.6em;
+  font-weight: bold;
+}
+
+h2 {
+  font-size: 2em;
+  font-weight: bold;
+  margin-bottom: 0.2em;
+}
+
+h3 {
+  font-size: 1.6em;
+  font-weight: bold;
+  margin-bottom: 0.2em;
+}
+
+p {
+  line-height: 1.2em;
+}
+
+.btn{
+    position: absolute;
+    right: 15px;
+    top: 6px;
+    color: white;
+    background-color: transparent;
+    font-size: 1.5em;
+    padding:10px;
+    transition-duration: 0.4s;
+    cursor: pointer;
+}
+
+.btn:hover{
+    color: black;
+    background-color: white;
+}
+
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  left:0;
+  top:0;
+  width: 100%;
+  height: 100%;
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgba(0,0,0,0.3); /* Black w/ opacity */
+}
+
+.modal-content {
+  background-color: #fefefe;
+  margin: 15% auto; /* 15% from the top and centered */
+  padding: 20px;
+  border: 1px solid #888;
+  width: 60%; /* Could be more or less, depending on screen size */
+}
+
+.close {
+  color: black;
+  float: right;
+  font-size: 30px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: #b60400;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.main {
+  display: grid;
+  grid-template-columns: 400px auto;
+  grid-template-rows: 60px 20% auto;
+  height: 100%;
+}
+
+.header {
+  grid-column: 1 / 3;
+  background-color: black;
+  color: white;
+  padding: 12px 20px;
+}
+
+.checkbox-box {
+  border: 1px solid black;
+  display: inline-block;
+  padding: 6px 10px 6px 6px;
+  font-weight: bold;
+}
+
+.checkbox-box:hover {
+  background-color: white;
+}
+
+.slider-box {
+  margin-top: 24px;
+  display: flex;
+  align-items: center;
+  font-weight: bold;
+  font-size: 1.4em;
+}
+
+.slider-box.disabled {
+  opacity: 0.2;
+}
+
+.slider-box .slider {
+  margin-left: 8px;
+  width: 100%;
+}
+
+.time-slider {
+  border-right: 1px solid black;
+  border-bottom: 1px solid black;
+  padding: 16px;
+  background-color: #EEE;
+}
+
+.graph {
+  border-bottom: 1px solid black;
+  padding: 16px;
+  background-color: #EEE;
+}
+
+.sidebar {
+  background-color: white;
+  border-right: 1px solid black;
+  padding: 16px;
+  overflow: auto;
+}
+
+.map #map {
+  width: 100%;
+  height: 100%;
+}
+
+.map-tooltip {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  pointer-events: none;
+  background-color: white;
+  padding: 12px;
+  max-width: 300px;
+  border: 1px solid black;
+}
+
+.map-tooltip:empty {
+  display: none;
+}
+
+.map-tooltip h2 {
+  font-size: 1.2em;
 }
