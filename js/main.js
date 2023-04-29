@@ -329,4 +329,11 @@ document.addEventListener('DOMContentLoaded', () => {
     
     // Create and add basemap control to the map
     const baseMapControl = L.control.layers(baseMaps, null, { position: 'bottomleft', collapsed: false }).addTo(map);
+    
 });
+
+function openPopup() {
+  window.location.hash = 'openModal';
+}
+
+window.onload = openPopup;
