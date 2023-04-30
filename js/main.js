@@ -165,7 +165,7 @@ document.addEventListener('DOMContentLoaded', () => {
             'Highway-Rail Crossing': 'img/Highway_Rail_Crossing_Icon.png',
             'Other (Described in Narrative)': 'img/Other_Icon.png',
             'Derailment': 'img/Derailment_Icon.png',
-            'Broken Train Collision': 'img/Broken_Train_Icon.png',
+            'Broken Train Collision': 'img/Broken_Train_Collision_Icon.png',
             'Fire / Violent Rupture': 'img/Fire_Icon.png',
             'Head On Collision': 'img/Head_on_Collision_Icon.png',
             'Obstruction': 'img/Obstruction_Icon.png',
