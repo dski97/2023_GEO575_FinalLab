@@ -17,12 +17,12 @@
     
 </head>
 <body>
+<!--    Opening Pop-Up Window   -->
  <div id="openModal" class="modalDialog">
     <div>
 
     <a href="#close" title="Close" class="close">X</a>
-    <h2>USA Train Accidents 2012 - 2022</h2>
-    <p><br>Welcome! The purpose of this tool is:
+        <p><br>Welcome! The purpose of this tool is:
         <br>
         (1) to understand the causes of train accidents over the last ten years and help identify potential safety hazards
         <br>
@@ -41,25 +41,28 @@
         </p>
         </div>
 </div>
-
+    
+<!--Wrap Title, Map, and Filter together-->
 <div id="content-wrapper">
     <!-- Map Title  -->
-<div id="map-title">
+    <div id="map-title">
          <h1>USA Train Accidents 2012 - 2022 </h1>
-</div>
+    </div>
 
-<div id="map-wrapper">
-<!--Side Panel-->
-<div id="filters-container">    
-    <div id="year-slider">
-        <label for="year-input"><h3>Year: <span id="year-label">All</span></h3></label>
-        <input type="range" id="year-input" min="2011" max="2022" value="2011" step="1">
-        <button id="year-reset">Select All Years</button>
-     </div>
+<!--Wrap Map and Filter together-->
+    <div id="map-wrapper">
+        <!--Side Panel-->
+        <div id="filters-container">  
+            <!--Range Slider-->
+            <div id="year-slider">
+                <label for="year-input"><h3>Year: <span id="year-label">All</span></h3></label>
+                <input type="range" id="year-input" min="2011" max="2022" value="2011" step="1">
+                <button id="year-reset">Select All Years</button>
+            </div>
         
-    <div id="accident-type-dropdown-container">
-            <label for="accident-type-dropdown"><h3>View By Accident Type: </h3></label>
-            <select id="accident-type-dropdown">
+            <div id="accident-type-dropdown-container">
+                <label for="accident-type-dropdown"><h3>View By Accident Type: </h3></label>
+                <select id="accident-type-dropdown">
                 <option value="All">All</option>
                 <option value="Broken Train Collision">Broken Train Collision</option>
                 <option value="Derailment">Derailment</option>
@@ -73,25 +76,25 @@
                 <option value="RR Grade Crossing">RR Grade Crossing</option>
                 <option value="Side Collision">Side Collision</option>
                 <option value="Other (Described in Narrative)">Other (Described in Narrative)</option>
-            </select>
-    </div>
-    <br>     
-    <div id="railroad-company-search-container">
-        <label for="railroad-company-search"><h3>Railroad Company Name: </h3></label>
-        <input type="text" id="railroad-company-search" placeholder="Search...">
-    </div> 
-    <div id="accident-count-container">
-        <h3>Visible Accidents: <b><span id="accident-count">0</span></b></h3>
-    </div>
-    <div id="legend-container">
-        <img src="img/Legend.png" alt="Legend" class=responsive>
-    </div>
-</div>
+                </select>
+            </div>
+        <br>     
+            <div id="railroad-company-search-container">
+                <label for="railroad-company-search"><h3>Railroad Company Name: </h3></label>
+                <input type="text" id="railroad-company-search" placeholder="Search...">
+            </div> 
+            <div id="accident-count-container">
+                <h3>Visible Accidents: <span id="accident-count">0</span></h3>
+            </div>
+            <div id="legend-container">
+                <img src="img/Legend.png" alt="Legend" class=responsive>
+            </div>
+        </div>
     
-<div id="map-container">
-<div id="map"></div>  
-</div>
-</div>
+        <div id="map-container">
+            <div id="map"></div>  
+        </div>
+    </div>
 </div>
     
     <script type="text/javascript" src="lib/jquery-3.5.1.js"></script>

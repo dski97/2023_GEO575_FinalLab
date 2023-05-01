@@ -1,9 +1,4 @@
 /* style.css */
-@font-face{
-    font-family:'AllAboard';
-    src: url(css/fonts/Kballaboard-ey9e.ttf) format('truetype');
-}
-
 img {
   max-inline-size: 100%;
   block-size: auto;
@@ -24,7 +19,7 @@ img {
     background-color: #383838;
     color: white;
     box-sizing: border-box;
-    z-index: 9999; /* add z-index to bring the title to front */
+    z-index: 8888; /* add z-index to bring the title to front */
 }
 
 #filters-container {
@@ -34,7 +29,8 @@ img {
     flex: 0 0 25%;
     display: flex;
     flex-direction: column;
-    height: 100%;
+    max-height: calc(100vh - 8em);
+    overflow-y: auto;
 }
 
 #map {
@@ -59,10 +55,6 @@ body, html {
     opacity: 0.7;
     -webkit-transition: .2s;
     transition: opacity .2s;
-}
-
-#year-slider:hover {
-  opacity: 1;
 }
 
 #year-slider:-webkit-slider-thumb {
@@ -97,6 +89,10 @@ body, html {
     text-align: center;
 }
 
+#year-label {
+  font-family: Tahoma, sans-serif;
+}
+
 #year-input {
     display: block;
     width: 100%;
@@ -104,9 +100,15 @@ body, html {
 
 #year-reset {
     display: block;
-    width: 100%;
-    height: 30px;
+    width: auto;
     margin-top: 10px;
+    margin: 0 auto;
+}
+
+@media screen and (max-width: 768px) {
+  #year-reset {
+    width: 100%;
+  }
 }
 
 .loading-cursor {
@@ -134,16 +136,23 @@ body, html {
     height:5em;
     justify-content: center;
     align-items: center;
-    font-family: Tahoma, Geneva, Verdana, sans-serif;
+    text-align: center;
 }
 
 #accident-count-container p {
     margin: 0;
 }
 
+#accident-count {
+    font-family: Tahoma, sans-serif;
+}
+
 #legend-container {
     position: relative;
-    border-top: 1em
+    border-top: 1em;
+    border-top: 1px solid #ccc;
+    padding-top: 1em;
+    margin-top: 1em;
 }
 
 /* Search box container */
@@ -297,9 +306,18 @@ p {
     margin-top: 5em;
     padding: 1em 1em 0 1em;
     box-sizing: border-box; 
+    display: flex;
+    flex-direction: column;
+    height: 100%;
 }
 
 #map-wrapper{
    display: flex;
     flex-wrap: wrap; 
+}
+
+#accident-type-dropdown-container label,
+#railroad-company-search-container label {
+  display: block;
+  text-align: center;
 }
