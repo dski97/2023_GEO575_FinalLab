@@ -131,6 +131,16 @@ document.addEventListener('DOMContentLoaded', () => {
     loadRailroadCompanyNames().then(railroadCompanyNames => {
         const railroadCompanySearch = document.getElementById("railroad-company-search");
         autocomplete(railroadCompanySearch, railroadCompanyNames);
+    
+        railroadCompanySearch.addEventListener("input", function () {
+            if (this.value === "") {
+                const yearInput = document.getElementById("year-input");
+                const year = yearInput.value === "2011" ? "All" : yearInput.value;
+                const accidentType = document.getElementById("accident-type-dropdown").value;
+                const companyName = ""; 
+                filterTrainAccidents(year, accidentType, companyName);
+            }
+        });
     });
 
     // Custom train station icon
