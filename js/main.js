@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
     // Create map
-    const map = L.map('map').setView([37.8, -96], 4);
+    const map = L.map('map').setView([43, -96], 4);
     
     //basemap tile options
     const tileLayerOptions = { maxZoom: 18, minZoom: 2, attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors' };
@@ -22,7 +22,7 @@ document.addEventListener('DOMContentLoaded', () => {
             icon: '&#x1f3e0;', // Unicode house character
             title: 'Zoom to original extent',
             onClick: function (btn, map) {
-                map.setView([37.8, -96], 4);
+                map.setView([43, -96], 4);
             }
         }]
     }).addTo(map);
@@ -133,13 +133,16 @@ document.addEventListener('DOMContentLoaded', () => {
         autocomplete(railroadCompanySearch, railroadCompanyNames);
     
         railroadCompanySearch.addEventListener("input", function () {
-            if (this.value === "") {
-                const yearInput = document.getElementById("year-input");
-                const year = yearInput.value === "2011" ? "All" : yearInput.value;
-                const accidentType = document.getElementById("accident-type-dropdown").value;
-                const companyName = ""; 
-                filterTrainAccidents(year, accidentType, companyName);
-            }
+            // Get the selected year and accident type.
+            const yearInput = document.getElementById("year-input");
+            const year = yearInput.value === "2011" ? "All" : yearInput.value;
+            const accidentType = document.getElementById("accident-type-dropdown").value;
+    
+            // Get the current value of the railroad company search input.
+            const companyName = this.value;
+    
+            // If the company name is empty, set it to "All" to show all railroad companies.
+            filterTrainAccidents(year, accidentType, companyName === "" ? "All" : companyName);
         });
     });
 
