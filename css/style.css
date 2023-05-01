@@ -24,31 +24,23 @@ img {
     background-color: #383838;
     color: white;
     box-sizing: border-box;
-    z-index: 10
+    z-index: 9999; /* add z-index to bring the title to front */
 }
 
 #filters-container {
-    position: relative;
-    top: calc(2px + 50px + 20px); 
-    width: 20%; 
-    height: calc(100% - (10px + 24px + 40px));
-    box-sizing: border-box;
-    overflow-y: auto;
-    overflow-x: auto;
-    background-color: white;
-    border-right: 1px solid black;
-    padding: 16px;
-    overflow: auto;
-    align-items: center;
+    float: left;
+    width: 25%;
+    padding-right: 10px;
+    flex: 0 0 25%;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
 }
 
 #map {
-    position: absolute;
-    left: 20%; 
-    top: calc(20px + 50px + 20px); 
-    width: 80%; 
-    height: calc(100% - (10px + 24px + 40px)); 
-    border: 0;
+   flex: 1; /* use flexbox to make the map container take up the remaining space */
+    height: calc(100vh - 8em); /* set height to fill the remaining viewport */
+    margin-left: 1em; /* add some left margin to align with filters container */
 }
 
 body, html {
@@ -61,7 +53,6 @@ body, html {
     position: relative;
     -webkit-appearance: none;
     width: 100%;
-    background-color: rgba(255, 255, 255, 0.8);
     padding: 10px;
     box-sizing: border-box;
     outline: none;
@@ -74,7 +65,7 @@ body, html {
   opacity: 1;
 }
 
-#year-slider::-webkit-slider-thumb {
+#year-slider:-webkit-slider-thumb {
   -webkit-appearance: none;
   appearance: none;
   width: 23px;
@@ -88,7 +79,7 @@ body, html {
   cursor: pointer;
 }
 
-#year-slider::-moz-range-thumb {
+#year-slider:-moz-range-thumb {
   width: 23px;
   height: 24px;
   border: 0;
@@ -289,4 +280,23 @@ p {
 	box-shadow: 1px 1px 3px #000;
 }
 
-.close:hover { background: #00d9ff; }
+.close:hover { background: #e9e9e9; }
+
+
+#map-container{
+    overflow: hidden;
+    margin-left: 25%; 
+    flex: 1;
+    margin-left: 10px;
+}
+
+#content-wrapper{
+    margin-top: 5em;
+    padding: 1em 1em 0 1em;
+    box-sizing: border-box; 
+}
+
+#map-wrapper{
+   display: flex;
+    flex-wrap: wrap; 
+}

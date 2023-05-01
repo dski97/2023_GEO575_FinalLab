@@ -9,7 +9,6 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Train+One&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/bootstrap.css">
     <link rel="stylesheet" href="lib/leaflet/leaflet.css">
     <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.4.1/dist/MarkerCluster.css" />
     <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.4.1/dist/MarkerCluster.Default.css" />
@@ -20,6 +19,7 @@
 <body>
  <div id="openModal" class="modalDialog">
     <div>
+
     <a href="#close" title="Close" class="close">X</a>
     <h2>USA Train Accidents 2012 - 2022</h2>
     <p><br>Welcome! The purpose of this tool is:
@@ -41,11 +41,15 @@
         </p>
         </div>
 </div>
-    
+
+<div id="content-wrapper">
+    <!-- Map Title  -->
 <div id="map-title">
          <h1>USA Train Accidents 2012 - 2022 </h1>
 </div>
 
+<div id="map-wrapper">
+<!--Side Panel-->
 <div id="filters-container">    
     <div id="year-slider">
         <label for="year-input"><h3>Year: <span id="year-label">All</span></h3></label>
@@ -83,9 +87,13 @@
         <img src="img/Legend.png" alt="Legend" class=responsive>
     </div>
 </div>
-
+    
+<div id="map-container">
 <div id="map"></div>  
-
+</div>
+</div>
+</div>
+    
     <script type="text/javascript" src="lib/jquery-3.5.1.js"></script>
     <script src="lib/leaflet/leaflet-src.js"></script>
     <script src="lib/leaflet-providers.js"></script>

@@ -6,13 +6,12 @@ document.addEventListener('DOMContentLoaded', () => {
     const tileLayerOptions = { maxZoom: 18, minZoom: 2, attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors' };
     const osm = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', tileLayerOptions);
     const cartoLight = L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', { ...tileLayerOptions, attribution: tileLayerOptions.attribution + ' &copy; <a href="https://carto.com/attributions">CARTO</a>' });
-    const stamenToner = L.tileLayer('https://stamen-tiles-{s}.a.ssl.fastly.net/toner/{z}/{x}/{y}{r}.png', { ...tileLayerOptions, attribution: 'Map tiles by <a href="http://stamen.com">Stamen Design</a>, <a href="http://creativecommons.org/licenses/by/3.0">CC BY 3.0</a> &mdash; ' + tileLayerOptions.attribution });
 
     // Add default basemap to the map
     osm.addTo(map);
 
     // Create an object containing all basemaps
-    const baseMaps = { "OpenStreetMap": osm, "Carto Light": cartoLight, "Stamen Toner": stamenToner };
+    const baseMaps = { "OpenStreetMap": osm, "Carto Light": cartoLight };
 
     
 
