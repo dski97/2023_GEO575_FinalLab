@@ -20,18 +20,11 @@ img {
     top: 0;
     left: 0;
     width: 100%;
-    background-color: black;
+    padding: 1em;
+    background-color: #383838;
     color: white;
-    padding: 12px 20px;
     box-sizing: border-box;
-    z-index: 1
-}
-
-#map-title h1 {
-    margin: 0;
-    font-family: 'Train One', sans-serif;
-    font-size: 54 px;
-    text-align: center;
+    z-index: 10
 }
 
 #filters-container {
@@ -41,16 +34,18 @@ img {
     height: calc(100% - (10px + 24px + 40px));
     box-sizing: border-box;
     overflow-y: auto;
+    overflow-x: auto;
     background-color: white;
     border-right: 1px solid black;
     padding: 16px;
     overflow: auto;
+    align-items: center;
 }
 
 #map {
     position: absolute;
     left: 20%; 
-    top: calc(12px + 50px + 10px); 
+    top: calc(20px + 50px + 20px); 
     width: 80%; 
     height: calc(100% - (10px + 24px + 40px)); 
     border: 0;
@@ -64,25 +59,57 @@ body, html {
 
 #year-slider {
     position: relative;
+    -webkit-appearance: none;
     width: 100%;
     background-color: rgba(255, 255, 255, 0.8);
     padding: 10px;
     box-sizing: border-box;
+    outline: none;
+    opacity: 0.7;
+    -webkit-transition: .2s;
+    transition: opacity .2s;
+}
+
+#year-slider:hover {
+  opacity: 1;
+}
+
+#year-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 23px;
+  height: 24px;
+  border: 0;
+  border-radius: 50%
+  background: url('/img/Train.png');
+  background-size: contain;
+  background-position: center center;
+  background-repeat: no-repeat;
+  cursor: pointer;
+}
+
+#year-slider::-moz-range-thumb {
+  width: 23px;
+  height: 24px;
+  border: 0;
+  border-radius: 50%
+  background: url('/img/Train.png');
+  background-size: contain;
+  background-position: center center;
+  background-repeat: no-repeat;
+  cursor: pointer;
 }
 
 #year-slider label {
     display: block;
     margin-bottom: 5px;
-    font-family: "Train One", sans-serif;
-    font-size: 24px;
     text-align: center;
 }
 
 #year-input {
     display: block;
     width: 100%;
-    
-}
+ }
 
 #year-reset {
     display: block;
@@ -99,26 +126,24 @@ body, html {
     position: relative;
     width: 100%
     background-color: rgba(255, 255, 255, 0.8);
-    padding: 20px;
-    border-radius: 5px;
-    z-index: 1000;
+    z-index: 3;
 }
 
 #accident-type-dropdown {
     display: block;
     width: 100%;
     margin-top: 5px;
+    font-size: 1em;
 }
 
 #accident-count-container {
     position: relative;
-    width: 100%
     background-color: white;
-    padding: 20px;
-    border: 1px solid rgba(0, 0, 0, 0.2);
-    border-radius: 4px;
-    font-family: Arial, sans-serif;
-    font-size: 14px;
+    display: flex;
+    height:5em;
+    justify-content: center;
+    align-items: center;
+    font-family: Tahoma, Geneva, Verdana, sans-serif;
 }
 
 #accident-count-container p {
@@ -127,22 +152,21 @@ body, html {
 
 #legend-container {
     position: relative;
-    padding: 10px;
-    }
+    border-top: 1em
+}
 
 /* Search box container */
 .search-container {
     position: relative;
-    margin: 20px;
+    margin: 10px;
 }
 
 /* Search box input */
 #railroad-company-search {
     padding: 10px;
-    width: 100%;
-    font-size: 14px;
+    width: 90%;
+    font-size: 1em;
     border: 2px solid #ccc;
-    border-radius: 5px;
     outline: none;
     height: auto; 
 }
@@ -158,14 +182,13 @@ body, html {
     border: 1px solid #d4d4d4;
     border-bottom: none;
     border-top: none;
-    z-index: 99;
+    z-index: 999;
     top: 100%;
     left: 0;
     right: 0;
     max-height: calc(7 * 40px);
     overflow-y: scroll;
 }
-
 
 /* Autocomplete items */
 .autocomplete-items div {
@@ -183,42 +206,50 @@ body, html {
 h1 {
   font-size: 2.6em;
   font-weight: bold;
+  margin: 0;
+  font-family: 'Train One', sans-serif;
+  text-align: center;
 }
 
 h2 {
   font-size: 2em;
   font-weight: bold;
   margin-bottom: 0.2em;
+  font-family: 'Train One';
+  color: #383838;
 }
 
 h3 {
-  font-size: 1.6em;
-  font-weight: bold;
-  margin-bottom: 0.2em;
+  font-size: 1.2em;
+  margin-bottom: 0.1em;
+  font-family: "Train One", sans-serif;
+  color: #383838;
 }
 
 p {
   line-height: 1.2em;
+  color:#383838;
 }
 
 .modalDialog {
 	position: fixed;
+    width: 100%;
+    height: 100%;
 	font-family: Tahoma, Geneva, Verdana, sans-serif;
+    display: flex
+    align-items: center;
+    justify-content: center;
 	top: 0;
 	right: 0;
 	bottom: 0;
 	left: 0;
 	background: rgba(0,0,0,0.8);
-	z-index: 99999;
+	z-index: 9999;
 	opacity:0;
 	-webkit-transition: opacity 400ms ease-in;
 	-moz-transition: opacity 400ms ease-in;
 	transition: opacity 400ms ease-in;
 	pointer-events: none;
-}
-
-.modalDialog h2 {
-    font-family: 'Train One'
 }
 
 .modalDialog:target {
@@ -227,7 +258,7 @@ p {
 }
 
 .modalDialog > div {
-	width: 620px;
+	max-width: 620px;
 	position: relative;
 	margin: 10% auto;
 	padding: 5px 20px 13px 20px;

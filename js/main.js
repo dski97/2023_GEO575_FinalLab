@@ -332,8 +332,9 @@ document.addEventListener('DOMContentLoaded', () => {
     
 });
 
+//function to create opening pop-up message that must be closed to use map
 function openPopup() {
   window.location.hash = 'openModal';
 }
-
+//opens popup when the window loads
 window.onload = openPopup;

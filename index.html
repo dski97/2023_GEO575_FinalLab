@@ -18,34 +18,43 @@
     
 </head>
 <body>
-   <div id="openModal" class="modalDialog">
-            <div>
-                <a href="#close" title="Close" class="close">X</a>
-                <h2>USA Train Accidents 2012 - 2022</h2>
-                <p><br>Welcome! This tool is for members of the general public who have an interest in learning about rail accidents in the United States over the last 10 years. If interested in a specific accident use the provided dropdown filters, or if interested in seeing trends over time toggle through the time slider in the upper left.
-            <br>
-            <br>
-            Railroad line data was obtained from xxxx. 
-            <br>
-            <br>
-            This site was created by UW Madison students Domonic Cwalinski and Lisa Siewert in May 2023.
-            </p>
-            </div>
+ <div id="openModal" class="modalDialog">
+    <div>
+    <a href="#close" title="Close" class="close">X</a>
+    <h2>USA Train Accidents 2012 - 2022</h2>
+    <p><br>Welcome! The purpose of this tool is:
+        <br>
+        (1) to understand the causes of train accidents over the last ten years and help identify potential safety hazards
+        <br>
+        (2) to raise public awareness to be more vigilant and cautious around train and railroads    
+        <br>
+        (3) to identify areas where regulations and laws need to be updated or changed to ensure compliance and prevent future accidents
+       <br>
+       <br>
+        Railroad line data was obtained from ESRI and the NGDA (National Geospatial Data Asset). 
+        <br>
+        <br>
+        Map icons use Noun Project graphics from Daniele Catalanotto (derail), Tomas Knopp (fire), Prashanth Rapolu (head-on collision; broken train collision), SAM Designs (obstruction), kasign23 (other impacts), Gan Khoon Lay (highway-rail crossing), walkerstudio13 (raking), Matt Caisley (rear collision), Adrien Coquet (side-hit), and Adi Kurniawan (train station).
+        <br>
+        <br>
+        This site was created by UW Madison students Domonic Cwalinski and Lisa Siewert in May 2023.
+        </p>
         </div>
+</div>
     
 <div id="map-title">
          <h1>USA Train Accidents 2012 - 2022 </h1>
 </div>
 
- <div id="filters-container">    
+<div id="filters-container">    
     <div id="year-slider">
-        <label for="year-input">Year: <span id="year-label">All</span></label>
+        <label for="year-input"><h3>Year: <span id="year-label">All</span></h3></label>
         <input type="range" id="year-input" min="2011" max="2022" value="2011" step="1">
         <button id="year-reset">Select All Years</button>
      </div>
         
     <div id="accident-type-dropdown-container">
-            <label for="accident-type-dropdown">View By Accident Type: </label>
+            <label for="accident-type-dropdown"><h3>View By Accident Type: </h3></label>
             <select id="accident-type-dropdown">
                 <option value="All">All</option>
                 <option value="Broken Train Collision">Broken Train Collision</option>
@@ -61,25 +70,22 @@
                 <option value="Side Collision">Side Collision</option>
                 <option value="Other (Described in Narrative)">Other (Described in Narrative)</option>
             </select>
-     </div>
-       <br>     
-    <div id="accident-count-container">
-            <p>Visible Accidents: <span id="accident-count">0</span></p>
     </div>
-         <br>   
+    <br>     
     <div id="railroad-company-search-container">
-            <label for="railroad-company-search">Railroad Company Name: </label>
-            <input type="text" id="railroad-company-search" placeholder="Search...">
+        <label for="railroad-company-search"><h3>Railroad Company Name: </h3></label>
+        <input type="text" id="railroad-company-search" placeholder="Search...">
+    </div> 
+    <div id="accident-count-container">
+        <h3>Visible Accidents: <b><span id="accident-count">0</span></b></h3>
     </div>
-    
-   <div id="legend-container">
-            <img src="img/Legend.png" width="300" height="400">
+    <div id="legend-container">
+        <img src="img/Legend.png" alt="Legend" class=responsive>
     </div>
 </div>
 
 <div id="map"></div>  
 
-            
     <script type="text/javascript" src="lib/jquery-3.5.1.js"></script>
     <script src="lib/leaflet/leaflet-src.js"></script>
     <script src="lib/leaflet-providers.js"></script>
