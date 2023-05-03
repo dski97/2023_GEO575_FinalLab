@@ -63,7 +63,7 @@ body, html {
   width: 23px;
   height: 24px;
   border: 0;
-  border-radius: 50%
+  border-radius: 50%;
   background: url('/img/Train.png');
   background-size: contain;
   background-position: center center;
@@ -75,7 +75,7 @@ body, html {
   width: 23px;
   height: 24px;
   border: 0;
-  border-radius: 50%
+  border-radius: 50%;
   background: url('/img/Train.png');
   background-size: contain;
   background-position: center center;
@@ -321,3 +321,4 @@ p {
   display: block;
   text-align: center;
 }
+
