@@ -156,13 +156,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Custom style for train track lines
     const trainTrackStyle = {
-        color: '#808080', 
-        weight: 6, 
-        opacity: 0.8, 
-        dashArray: '3, 15', 
-        lineCap: 'square', 
-        lineJoin: 'square'
-    };
+  color: '#808080',
+  weight: 5,
+  opacity: 0.8,
+  dashArray: '3, 8, 3, 8',
+  lineCap: 'butt',
+  lineJoin: 'miter'
+};
     
     // Custom style for highlighted train track lines
     const highlightedTrainTrackStyle = {
@@ -232,8 +232,8 @@ document.addEventListener('DOMContentLoaded', () => {
     let trainAccidentsData;
     let trainAccidentsCluster = L.markerClusterGroup();
     map.addLayer(trainAccidentsCluster);
-
-    // Wait for all GeoJSON layers to load before adding the layer control
+    
+   // Wait for all GeoJSON layers to load before adding the layer control
     Promise.all([
         // Load TrainAccidents geojson file and add it to a marker cluster group
         loadGeoJSON('data/TrainAccidents.geojson', {
@@ -257,13 +257,27 @@ document.addEventListener('DOMContentLoaded', () => {
                 ];
                 
                 // Create the popup content by mapping the display properties to a string of HTML
-                const popupContent = displayProperties
-                    .map(({ key, displayName }) => `<b>${displayName}:</b> ${feature.properties[key]}`)
-                    .join('<br>');
-                marker.bindPopup(popupContent);
-                return marker;
-            }
-        }).then(data => {
+                const popupContent = `
+                <div class="leaflet-popup-content-wrapper">
+                    <div class="popup-container">
+                    <div class="popup-content">
+                    ${displayProperties
+                    .map(
+                        ({ key, displayName }) =>
+                            `<div class="popup-row"><b>${displayName}:</b> ${
+                            feature.properties[key]
+                        }</div>`
+                    )
+                    .join('')}
+                    </div>
+                    </div>
+                    </div>
+                
+        `;
+    marker.bindPopup(popupContent, { minWidth: 300 });
+    return marker;
+  }
+       }).then(data => {
             trainAccidentsData = data;
             trainAccidentsData.eachLayer(layer => trainAccidentsCluster.addLayer(layer));
             overlayLayers["Train Accidents"] = trainAccidentsCluster;
