@@ -145,6 +145,7 @@ document.addEventListener('DOMContentLoaded', () => {
             filterTrainAccidents(year, accidentType, companyName === "" ? "All" : companyName);
         });
     });
+    
 
     // Custom train station icon
     const trainStationIcon = L.icon({
@@ -225,6 +226,26 @@ document.addEventListener('DOMContentLoaded', () => {
         document.getElementById('accident-count').textContent = count;
     }
 
+    // Function to update the map based on the current year, accident type, and company name
+    function updateMapWithCurrentFilters() {
+        // Get the selected year
+        const yearInput = document.getElementById('year-input');
+        let year = parseInt(yearInput.value); // Convert the year value to an integer
+        year = isNaN(year) || year === 2011 ? 'All' : year; // Check for 'All' year
+        // Get the selected accident type
+        const accidentType = document.getElementById('accident-type-dropdown').value;
+        // Get the selected company name
+        const companyName = document.getElementById('railroad-company-search').value || 'All';
+        // Call the filterTrainAccidents function with the current filters
+        filterTrainAccidents(year, accidentType, companyName);
+    }
+
+    // Add event listener to the accident type dropdown
+    document.getElementById('accident-type-dropdown').addEventListener('change', function (event) {
+        updateMapWithCurrentFilters();
+    });
+
+    
     // Create layer control
     const overlayLayers = {};
 
