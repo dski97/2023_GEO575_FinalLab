@@ -258,8 +258,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 
                 // Create the popup content by mapping the display properties to a string of HTML
                 const popupContent = `
-                <div class="leaflet-popup-content-wrapper">
-                    <div class="popup-container">
+                <div class="popup-container">
                     <div class="popup-content">
                     ${displayProperties
                     .map(
@@ -269,7 +268,6 @@ document.addEventListener('DOMContentLoaded', () => {
                         }</div>`
                     )
                     .join('')}
-                    </div>
                     </div>
                     </div>
                 
